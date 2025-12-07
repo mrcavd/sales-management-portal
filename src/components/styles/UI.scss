@@ -1,0 +1,122 @@
+/* Main Content Layout */
+.main-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 2rem;
+
+    header {
+        margin-bottom: 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+    }
+}
+
+/* Cards Grid */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+/* Info Card */
+.info-card {
+    background-color: hsl(var(--color-bg-card));
+    padding: 1.5rem;
+    border-radius: 1rem;
+    border: 1px solid hsl(var(--color-border));
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+    }
+
+    .card-title {
+        color: hsl(var(--color-text-muted));
+        font-size: 0.875rem;
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+    }
+
+    .card-value {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: hsl(var(--color-text-main));
+    }
+
+    .card-trend {
+        font-size: 0.875rem;
+        margin-top: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+
+        &.trend-up {
+            color: hsl(var(--color-success));
+        }
+
+        &.trend-down {
+            color: hsl(var(--color-danger));
+        }
+    }
+}
+
+/* Base UI Elements */
+.btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid hsl(var(--color-border));
+    background-color: hsl(var(--color-bg-app));
+    color: hsl(var(--color-text-main));
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+
+    &:hover {
+        border-color: hsl(var(--color-primary));
+        color: hsl(var(--color-primary));
+    }
+}
+
+/* Table */
+.table-container {
+    background-color: hsl(var(--color-bg-card));
+    border-radius: 1rem;
+    border: 1px solid hsl(var(--color-border));
+    overflow: hidden;
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+
+        th,
+        td {
+            padding: 1rem 1.5rem;
+            text-align: left;
+            border-bottom: 1px solid hsl(var(--color-border));
+        }
+
+        th {
+            background-color: hsl(var(--color-bg-app));
+            font-weight: 600;
+            font-size: 0.875rem;
+            color: hsl(var(--color-text-muted));
+        }
+
+        td {
+            font-size: 0.925rem;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+    }
+}

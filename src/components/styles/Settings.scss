@@ -1,0 +1,13 @@
+/* Settings */
+.settings-section {
+    background-color: hsl(var(--color-bg-card));
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 1px solid hsl(var(--color-border));
+
+    .theme-toggle {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+}

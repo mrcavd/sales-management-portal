@@ -1,5 +1,8 @@
-import './css/variables.css';
-import './css/main.css';
+import './scss/_variables.scss';
+import './scss/main.scss';
+import './components/styles/Sidebar.scss';
+import './components/styles/UI.scss';
+import './components/styles/Settings.scss';
 import { Sidebar, TabName } from './components/Sidebar';
 import { ReportDashboard } from './components/ReportDashboard';
 import { InventoryDashboard } from './components/InventoryDashboard';
