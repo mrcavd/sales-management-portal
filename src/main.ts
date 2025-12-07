@@ -13,20 +13,19 @@ if (started) {
 const reportService = new ReportService();
 const inventoryService = new InventoryService();
 
-const registerHandlers = () => {
-  ipcMain.handle('reports:get', async (_, range) => {
-    return await reportService.getReports(range);
-  });
+// Register Handlers Immediately
+ipcMain.handle('reports:get', async (_, range) => {
+  return await reportService.getReports(range);
+});
 
-  ipcMain.handle('inventory:get', async () => {
-    return await inventoryService.getAll();
-  });
+ipcMain.handle('inventory:get', async () => {
+  return await inventoryService.getAll();
+});
 
-  ipcMain.handle('settings:update', async (_, settings) => {
-    console.log('[Main] Settings update received:', settings);
-    return true;
-  });
-};
+ipcMain.handle('settings:update', async (_, settings) => {
+  console.log('[Main] Settings update received:', settings); // Keep this one as it's useful info, or remove if you prefer pure silence
+  return true;
+});
 
 const createWindow = () => {
   // Create the browser window.
@@ -54,10 +53,7 @@ const createWindow = () => {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', () => {
-  registerHandlers();
-  createWindow();
-});
+app.on('ready', createWindow);
 
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits

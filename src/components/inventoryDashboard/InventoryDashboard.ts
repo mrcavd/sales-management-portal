@@ -1,4 +1,3 @@
-import { MockApi } from '../../api/mockApi';
 import { createTable } from '../common';
 
 export class InventoryDashboard {
@@ -12,7 +11,7 @@ export class InventoryDashboard {
         this.container.innerHTML = '<div class="loading">Loading inventory...</div>';
 
         try {
-            const items = await MockApi.getInventory();
+            const items = await window.api.getInventory();
 
             const inventoryTable = createTable(
                 ['ID', 'Product Name', 'Category', 'Stock', 'Price', 'Status'],

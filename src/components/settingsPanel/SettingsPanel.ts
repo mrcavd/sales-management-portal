@@ -1,14 +1,14 @@
 export class SettingsPanel {
-    private container: HTMLElement;
+  private container: HTMLElement;
 
-    constructor(container: HTMLElement) {
-        this.container = container;
-    }
+  constructor(container: HTMLElement) {
+    this.container = container;
+  }
 
-    render() {
-        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  render() {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
 
-        this.container.innerHTML = `
+    this.container.innerHTML = `
       <header>
         <h1>Settings</h1>
       </header>
@@ -37,11 +37,15 @@ export class SettingsPanel {
       </div>
     `;
 
-        document.getElementById('theme-toggle-btn')?.addEventListener('click', () => {
-            const current = document.documentElement.getAttribute('data-theme');
-            const next = current === 'dark' ? 'light' : 'dark';
-            document.documentElement.setAttribute('data-theme', next);
-            this.render(); // Re-render to update button text
-        });
-    }
+    document.getElementById('theme-toggle-btn')?.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+
+      // Persist securely via Main process
+      window.api.updateSettings({ theme: next });
+
+      this.render(); // Re-render to update button text
+    });
+  }
 }

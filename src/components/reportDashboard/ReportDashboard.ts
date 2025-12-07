@@ -1,4 +1,3 @@
-import { MockApi } from '../../api/mockApi';
 import { createInfoCard, createTable } from '../common';
 
 export class ReportDashboard {
@@ -12,7 +11,7 @@ export class ReportDashboard {
     this.container.innerHTML = '<div class="loading">Loading reports...</div>';
 
     try {
-      const data = await MockApi.getReportsByRange('month');
+      const data = await window.api.getReports('month');
 
       const summaryCards = `
         <div class="grid-container">
