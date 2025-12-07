@@ -1,0 +1,16 @@
+/* Base Button */
+.btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid hsl(var(--color-border));
+    background-color: hsl(var(--color-bg-app));
+    color: hsl(var(--color-text-main));
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+
+    &:hover {
+        border-color: hsl(var(--color-primary));
+        color: hsl(var(--color-primary));
+    }
+}

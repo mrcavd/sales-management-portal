@@ -1,5 +1,5 @@
-import { MockApi } from '../api/mockApi';
-import { createTable } from './UI';
+import { MockApi } from '../../api/mockApi';
+import { createTable } from '../common';
 
 export class InventoryDashboard {
     private container: HTMLElement;

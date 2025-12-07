@@ -1,12 +1,14 @@
 import './scss/_variables.scss';
 import './scss/main.scss';
-import './components/styles/Sidebar.scss';
-import './components/styles/UI.scss';
-import './components/styles/Settings.scss';
-import { Sidebar, TabName } from './components/Sidebar';
-import { ReportDashboard } from './components/ReportDashboard';
-import { InventoryDashboard } from './components/InventoryDashboard';
-import { SettingsPanel } from './components/SettingsPanel';
+import './components/sidebar/Sidebar.scss';
+import './components/common/Button/Button.scss';
+import './components/common/Table/Table.scss';
+import './components/common/InfoCard/InfoCard.scss';
+import './components/settingsPanel/SettingsPanel.scss';
+import { Sidebar, TabName } from './components/sidebar/Sidebar';
+import { ReportDashboard } from './components/reportDashboard/ReportDashboard';
+import { InventoryDashboard } from './components/inventoryDashboard/InventoryDashboard';
+import { SettingsPanel } from './components/settingsPanel/SettingsPanel';
 
 console.log('Renderer process started');
 

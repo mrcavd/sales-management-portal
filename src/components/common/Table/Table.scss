@@ -1,0 +1,34 @@
+/* Table */
+.table-container {
+    background-color: hsl(var(--color-bg-card));
+    border-radius: 1rem;
+    border: 1px solid hsl(var(--color-border));
+    overflow: hidden;
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+
+        th,
+        td {
+            padding: 1rem 1.5rem;
+            text-align: left;
+            border-bottom: 1px solid hsl(var(--color-border));
+        }
+
+        th {
+            background-color: hsl(var(--color-bg-app));
+            font-weight: 600;
+            font-size: 0.875rem;
+            color: hsl(var(--color-text-muted));
+        }
+
+        td {
+            font-size: 0.925rem;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+    }
+}
