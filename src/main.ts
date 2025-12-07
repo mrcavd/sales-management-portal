@@ -1,11 +1,32 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, ipcMain } from 'electron';
 import path from 'node:path';
 import started from 'electron-squirrel-startup';
+import { ReportService } from './services/ReportService';
+import { InventoryService } from './services/InventoryService';
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (started) {
   app.quit();
 }
+
+// Instantiate Services
+const reportService = new ReportService();
+const inventoryService = new InventoryService();
+
+const registerHandlers = () => {
+  ipcMain.handle('reports:get', async (_, range) => {
+    return await reportService.getReports(range);
+  });
+
+  ipcMain.handle('inventory:get', async () => {
+    return await inventoryService.getAll();
+  });
+
+  ipcMain.handle('settings:update', async (_, settings) => {
+    console.log('[Main] Settings update received:', settings);
+    return true;
+  });
+};
 
 const createWindow = () => {
   // Create the browser window.
@@ -33,7 +54,10 @@ const createWindow = () => {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', createWindow);
+app.on('ready', () => {
+  registerHandlers();
+  createWindow();
+});
 
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits
@@ -51,6 +75,3 @@ app.on('activate', () => {
     createWindow();
   }
 });
-
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and import them here.
